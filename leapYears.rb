@@ -3,11 +3,26 @@
 # não são bissextos (como 1800 e 1900) a não ser que sejam divisíveis por 400 (como 1600 e 2000, que foram de fato anos bissextos). 
 # (Sim, é bem confuso, mas não tão confuso como ter dezembro no meio do inverno, que é o que aconteceria no fim).
 
+
+# Solução 01
+
 ini = gets.chomp.to_i
 fin = gets.chomp.to_i
 
 while ini <= fin
     if (ini % 4 == 0 && ini % 100 != 0) || (ini % 400 == 0)
+        puts "#{ini} é um ano bissexto"
+    end
+    ini += 1
+end
+
+# Solução 02
+
+ini = gets.chomp.to_i
+fin = gets.chomp.to_i
+
+while ini <= fin
+    if (Date.gregorian_leap?(ini))
         puts "#{ini} é um ano bissexto"
     end
     ini += 1
