@@ -38,7 +38,7 @@ class OrangeTree
 
     def oneYearPasses
         @height += 0.3
-        @age += 11
+        @age += 1
 
         if @age == 1
             puts "\n#######################################"
@@ -54,7 +54,7 @@ class OrangeTree
             end
             puts "\n########################################"
             puts "1 ano depois".center(@lineWidth)
-            puts "Idade: #{@age} ano"
+            puts "Idade: #{@age} anos"
             puts "Altura: #{@height.floor(2)} #{@unit}"
             puts "Frutos: #{@fruits}"
             puts "\n########################################\n\n"
@@ -91,11 +91,15 @@ class OrangeTree
     end
 
     def pickAnOrange
-        if @fruits == 0
+        if @age <=2
+            puts "x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x"
+            puts "Não há frutos para serem colhidos ainda!!!".center(@lineWidth + 15)
+            puts "x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x"
+        elsif @fruits == 0
             puts "x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x"
             puts "Ops...não há mais frutos!!!".center(@lineWidth)
             puts "x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x"
-        elsif @fruits >= 1
+        elsif @age >= 2 && @fruits >= 1
             @fruits -= 1
             puts "x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x"
             puts "Uau...essa laranja estava deliciosa!".center(@lineWidth)
@@ -105,28 +109,29 @@ class OrangeTree
 end
 
 orangeTree = OrangeTree.new
-orangeTree.height
-orangeTree.oneYearPasses
-orangeTree.countTheOranges
-orangeTree.oneYearPasses
-orangeTree.countTheOranges
-orangeTree.pickAnOrange
-orangeTree.pickAnOrange
-orangeTree.pickAnOrange
-orangeTree.pickAnOrange
-orangeTree.pickAnOrange
-orangeTree.pickAnOrange
-orangeTree.pickAnOrange
-orangeTree.pickAnOrange
-orangeTree.pickAnOrange
-orangeTree.pickAnOrange
-orangeTree.pickAnOrange
-orangeTree.countTheOranges
-orangeTree.oneYearPasses
-orangeTree.oneYearPasses
-orangeTree.oneYearPasses
-orangeTree.oneYearPasses
-orangeTree.oneYearPasses
-orangeTree.oneYearPasses
-orangeTree.oneYearPasses
-orangeTree.oneYearPasses
+puts "Aperte ENTER para ver as opções"
+leave = gets.chomp.downcase
+puts "1 - Idade e altura da árvore"
+puts "2 - Passar 1 ano"
+puts "3 - Contar laranjas"
+puts "4 - Pegar uma laranja"
+puts "6 - Finalizar o programa!"
+
+while leave != 'sair'
+    puts "Escolha uma opção:"
+    option = gets.chomp.to_i
+    case option
+    when 1
+        orangeTree.height
+    when 2
+        orangeTree.oneYearPasses
+    when 3
+        orangeTree.countTheOranges
+    when 4
+        orangeTree.pickAnOrange
+    else
+        puts "Finalizando o programa!"
+        break
+    end
+end
+
